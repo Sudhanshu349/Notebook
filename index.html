@@ -3,21 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CRUD App</title>
+  <title>Notebook App</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h2>CRUD App</h2>
-    <p class="note">📌 Tip: Add an item using the box below. You can edit or delete anytime!</p>
+  <!-- 🌟 Navbar -->
+  <nav class="navbar">
+    <div class="logo">MyNotebook</div>
+    
+  </nav>
 
-    <div class="input-group">
-      <input type="text" id="itemInput" placeholder="Enter item..." />
-      <button id="addBtn">Add</button>
-    </div>
+  <!-- 🌟 Main Content -->
+  <main class="main-content">
+    <section class="input-section">
+      <h2 class="page-title">📝 Notebook</h2>
+      <p class="note-tip">📌 Add, edit, or delete your notes below!</p>
 
-    <ul id="itemList"></ul>
-  </div>
+      <div class="input-card">
+        <input type="text" id="itemInput" placeholder="Write your note..." />
+        <button id="addBtn">Add Note</button>
+      </div>
+    </section>
+
+    <section class="notes-section">
+      <ul id="itemList" class="note-list"></ul>
+    </section>
+  </main>
+
+  <!-- 🌟 Footer -->
+  <footer class="footer">
+    <p>© 2025 MyNotebook | Built with ❤️</p>
+  </footer>
 
   <script src="app.js"></script>
 </body>
