@@ -1,40 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Notebook App</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>WhisperNote</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <!-- 🌟 Navbar -->
+  <!-- ✨ Navbar -->
   <nav class="navbar">
-    <div class="logo">MyNotebook</div>
-    
+    <h1 class="logo">WhisperNote</h1>
+    <div class="nav-actions">
+      <button id="openModalBtn" class="add-btn">＋ Add Note</button>
+      <button class="theme-toggle">🌙</button>
+    </div>
   </nav>
 
-  <!-- 🌟 Main Content -->
-  <main class="main-content">
-    <section class="input-section">
-      <h2 class="page-title">📝 Notebook</h2>
-      <p class="note-tip">📌 Add, edit, or delete your notes below!</p>
-
-      <div class="input-card">
-        <input type="text" id="itemInput" placeholder="Write your note..." />
-        <button id="addBtn">Add Note</button>
-      </div>
-    </section>
-
-    <section class="notes-section">
-      <ul id="itemList" class="note-list"></ul>
-    </section>
+  <!-- ✨ Notes Section -->
+  <main class="notes-container">
+    <input type="text" class="search-bar" placeholder="🔍 Search your notes...">
+    <ul id="itemList" class="note-list"></ul>
   </main>
 
-  <!-- 🌟 Footer -->
-  <footer class="footer">
-    <p>© 2025 MyNotebook | Built with ❤️</p>
-  </footer>
+  <!-- 📝 Add Note Modal -->
+  <div id="noteModal" class="modal-overlay">
+    <div class="modal">
+      <button class="close-modal">&times;</button>
+      <h2>Create a New Note 📝</h2>
+
+      <div class="editor-toolbar">
+        <button data-cmd="bold"><b>B</b></button>
+        <button data-cmd="italic"><i>I</i></button>
+        <button data-cmd="insertUnorderedList">• List</button>
+      </div>
+
+      <div id="richEditor" class="rich-editor" contenteditable="true" placeholder="Write something..."></div>
+
+      <div class="extras">
+        <input id="tagInput" type="text" placeholder="# Add tag (optional)">
+        <button id="addBtn" class="primary-btn">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">© 2025 MyNotebook | Built by Sudhanshu Sarkar</footer>
 
   <script src="app.js"></script>
+  <script>
+    // Modal open/close logic
+    const modal = document.getElementById("noteModal");
+    const openBtn = document.getElementById("openModalBtn");
+    const closeBtn = document.querySelector(".close-modal");
+
+    openBtn.onclick = () => {
+      modal.classList.add("active");
+    };
+    closeBtn.onclick = () => {
+      modal.classList.remove("active");
+    };
+    window.onclick = (e) => {
+      if (e.target === modal) modal.classList.remove("active");
+    };
+  </script>
 </body>
 </html>
