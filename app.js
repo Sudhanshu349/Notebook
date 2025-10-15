@@ -15,11 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
     list.innerHTML = "";
     notes
       .filter(n => n.text.toLowerCase().includes(filter.toLowerCase()))
+      .sort((a, b) => b.pinned - a.pinned) // pinned notes on top
       .forEach((note, index) => {
         const li = document.createElement("li");
         li.innerHTML = `
           <div class="note-content">${note.text}</div>
           <div class="note-tag">${note.tag ? "#" + note.tag : ""}</div>
+          <div class="note-time">${note.time}</div>
           <div class="note-actions">
             <button class="edit-btn">✏️</button>
             <button class="delete-btn">🗑️</button>
@@ -67,7 +69,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!content) return;
 
-    const newNote = { text: content, tag, pinned: false };
+    // Get current date and time
+    const now = new Date();
+    const timestamp = now.toLocaleString(); // e.g., "10/15/2025, 7:30:21 PM"
+
+    const newNote = { text: content, tag, pinned: false, time: timestamp };
 
     if (editingIndex !== null) {
       notes[editingIndex] = newNote;
