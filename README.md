@@ -1,0 +1,1 @@
+This is a notes taking app.It is made with HTML CSS and JavaScript.This project have all the functionalities of CRUD(Create, Read, Update, and Delete)operations.It also consists of many additional features like search,pin,Date and Time etc.It also has beautiful UI.
